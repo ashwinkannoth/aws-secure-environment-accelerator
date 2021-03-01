@@ -187,7 +187,7 @@ async function main() {
           commands: [
             'cd src/core/cdk',
             'export CDK_NEW_BOOTSTRAP=1',
-            `pnpx cdk bootstrap aws://${cdk.Aws.ACCOUNT_ID}/${cdk.Aws.REGION} --require-approval never --toolkit-stack-name=${acceleratorPrefix}CDKToolkit --cloudformation-execution-policies=arn:aws:iam::aws:policy/AdministratorAccess`,
+            `pnpx cdk bootstrap aws://${cdk.Aws.ACCOUNT_ID}/${cdk.Aws.REGION} --require-approval never --toolkit-stack-name=${acceleratorPrefix}CDKToolkit --cloudformation-execution-policies=arn:aws:iam::aws:policy/AdministratorAccess --qualifier=pbmmaccel`,
             `pnpx cdk deploy --require-approval never --toolkit-stack-name=${acceleratorPrefix}CDKToolkit`,
           ],
         },
