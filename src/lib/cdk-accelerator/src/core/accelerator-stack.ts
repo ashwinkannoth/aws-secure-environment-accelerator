@@ -11,14 +11,7 @@ export class AcceleratorStack extends cdk.Stack {
   readonly acceleratorPrefix: string;
 
   constructor(scope: cdk.Construct, id: string, props: AcceleratorStackProps) {
-    super(scope, id, {
-      ...props,
-      synthesizer: new cdk.DefaultStackSynthesizer({
-        qualifier: props.acceleratorPrefix.endsWith('-')
-          ? props.acceleratorPrefix.slice(0, -1).toLowerCase()
-          : props.acceleratorPrefix.toLowerCase(),
-      }),
-    });
+    super(scope, id, props);
 
     this.acceleratorName = props.acceleratorName;
     this.acceleratorPrefix = props.acceleratorPrefix;

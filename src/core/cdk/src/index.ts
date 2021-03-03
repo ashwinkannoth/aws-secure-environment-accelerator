@@ -30,6 +30,9 @@ async function main() {
 
   // Make Sure we change version in "package.json" with respect to code releases
   const acceleratorVersion = pkg.version;
+  const qualifier = acceleratorPrefix.endsWith('-')
+    ? acceleratorPrefix.slice(0, -1).toLowerCase()
+    : acceleratorPrefix.toLowerCase();
   console.log(`Installing Accelerator with version: ${acceleratorVersion}`);
 
   console.log(`Found accelerator context:`);
@@ -52,6 +55,10 @@ async function main() {
     enablePrebuiltProject,
     notificationEmail,
     acceleratorVersion,
+    synthesizer: new cdk.DefaultStackSynthesizer({
+      qualifier,
+      generateBootstrapVersionRule: false,
+    }),
   });
 }
 
